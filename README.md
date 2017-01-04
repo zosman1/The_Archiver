@@ -4,18 +4,20 @@
 
 
 ## Dev
-
+to install dependencies:
 ```
 $ npm install
 ```
-also, we have two functions for the linter.
 
+#### Linting
+We have two functions for the linter.
+This one tests for improper syntax:
 ```
-npm run test
+npm test
 ```
-and occasionally the linter can fix it for us! thanks xo!
+And this, according to xo can fix most erros that come up during testing
 ```
-npm fix
+npm run fix
 ```
 
 ### Run
