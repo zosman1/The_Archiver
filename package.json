@@ -34,13 +34,5 @@
     "devtron": "^1.1.0",
     "electron-packager": "^8.0.0",
     "electron": "^1.0.1",
-    "xo": "^0.16.0"
   },
-  "xo": {
-    "esnext": true,
-    "envs": [
-      "node",
-      "browser"
-    ]
-  }
 }
