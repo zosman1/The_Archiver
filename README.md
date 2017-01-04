@@ -8,6 +8,15 @@
 ```
 $ npm install
 ```
+also, we have two functions for the linter.
+
+```
+npm test
+```
+and occasionally the linter can fix it for us! thanks xo!
+```
+npm fix
+```
 
 ### Run
 
