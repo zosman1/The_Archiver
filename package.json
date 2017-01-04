@@ -11,10 +11,11 @@
     "url": ""
   },
   "scripts": {
-    "test": "xo *.js ",
+    "test": "xo *",
     "fix": "xo --fix",
     "start": "electron .",
-    "build": "electron-packager . --out=dist --asar --overwrite --all"
+    "build": "electron-packager . --out=dist --asar --overwrite --all",
+    "dev": "electron . --debug"
   },
   "files": [
     "index.js",
