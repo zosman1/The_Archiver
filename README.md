@@ -15,7 +15,7 @@ This one tests for improper syntax:
 ```
 npm test
 ```
-And this, according to xo can fix most erros that come up during testing
+And this, according to xo can fix most error that come up during testing
 ```
 npm run fix
 ```
