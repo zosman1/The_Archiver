@@ -14,7 +14,7 @@
     "test": "xo",
     "start": "electron .",
     "build": "electron-packager . --out=dist --asar --overwrite --all",
-    "run": "xo --fix"
+    "fix": "xo --fix"
   },
   "files": [
     "index.js",
