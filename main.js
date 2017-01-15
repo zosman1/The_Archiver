@@ -34,6 +34,19 @@ function down () {
     })
   }
 }
+function up () {
+  for (var i = 0; i < filesList.length; i++) {
+    mv('/Users/ZachO/Code/The_Archiver/' + filesList[i], '/Users/ZachO/Code/The_Archiver/tests/' + filesList[i], function (err) {
+      if (typeof err !== 'undefined') {
+          // the variable is defined
+        console.log('error on up function file: ' + filesList[i].toString())
+        console.log(translate(err.code))
+      } else {
+        console.log('up function completed succesfully on file: ' + filesList[i].toString())
+      }
+    })
+  }
+}
 
 function onedown () {
   mv('/Users/ZachO/Code/The_Archiver/tests/test1.txt', '/Users/ZachO/Code/The_Archiver/test1.txt', function (err) {
