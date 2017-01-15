@@ -26,6 +26,8 @@ Builds the app for macOS, Linux, and Windows, using [electron-packager](https://
 
 The commands use a bind in the package.json with the prefix `./node_modules/.bin/`
 
+To check debugging tools check out https://github.com/sindresorhus/electron-debug
+
 ## License
 
 MIT © [Zosman](http://zosman.com)
