@@ -13,7 +13,8 @@
   "scripts": {
     "test": "standard",
     "start": "electron .",
-    "build": "electron-packager . --out=dist --asar --overwrite --all"
+    "build": "electron-packager . --out=dist --asar --overwrite --all",
+    "fix": "standard --fix"
   },
   "files": [
     "index.js",
