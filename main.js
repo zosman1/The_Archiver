@@ -21,12 +21,12 @@ console.log(filesList)
 // mv('/tests/test1.txt', 'test1.txt', function (err) {
 //   console.log('Error in file moving')
 // })
-function down (){
+function down () {
   for (var i = 0; i < filesList.length; i++) {
-    mv('/Users/ZachO/Code/The_Archiver/tests/'+filesList[i], '/Users/ZachO/Code/The_Archiver/'+filesList[i], function (err) {
+    mv('/Users/ZachO/Code/The_Archiver/tests/' + filesList[i], '/Users/ZachO/Code/The_Archiver/' + filesList[i], function (err) {
       if (typeof err !== 'undefined') {
           // the variable is defined
-        console.log('error on down function file: '+ filesList[i].toString())
+        console.log('error on down function file: ' + filesList[i].toString())
         console.log(translate(err.code))
       } else {
         console.log('down function completed succesfully on file: ' + filesList[i].toString())
