@@ -5,13 +5,15 @@ function test () {
   console.log('hi')
 }
 
-const testFolder = './tests/'
+const testFolder = '/Users/ZachO/Code/The_Archiver/tests'
+var filesList = []
 fs.readdir(testFolder, (err, files) => {
   files.forEach(file => {
     console.log(file)
+    filesList.push(file)
   })
 })
-
+console.log(filesList)
 // mv('/Users/ZachO/Code/The_Archiver/tests/test1.txt', '/Users/ZachO/Code/The_Archiver/test1.txt', function (err) {
 //   console.log('Error in file ')
 // })
@@ -19,8 +21,21 @@ fs.readdir(testFolder, (err, files) => {
 // mv('/tests/test1.txt', 'test1.txt', function (err) {
 //   console.log('Error in file moving')
 // })
+function down (){
+  for (var i = 0; i < filesList.length; i++) {
+    mv('/Users/ZachO/Code/The_Archiver/tests/'+filesList[i], '/Users/ZachO/Code/The_Archiver/'+filesList[i], function (err) {
+      if (typeof err !== 'undefined') {
+          // the variable is defined
+        console.log('error on down function file: '+ filesList[i].toString())
+        console.log(translate(err.code))
+      } else {
+        console.log('down function completed succesfully on file: ' + filesList[i].toString())
+      }
+    })
+  }
+}
 
-function down () {
+function onedown () {
   mv('/Users/ZachO/Code/The_Archiver/tests/test1.txt', '/Users/ZachO/Code/The_Archiver/test1.txt', function (err) {
     if (typeof err !== 'undefined') {
         // the variable is defined
@@ -31,7 +46,7 @@ function down () {
     }
   })
 }
-function up () {
+function oneup () {
   mv('/Users/ZachO/Code/The_Archiver/test1.txt', '/Users/ZachO/Code/The_Archiver/tests/test1.txt', function (err) {
     if (typeof err !== 'undefined') {
         // the variable is defined
