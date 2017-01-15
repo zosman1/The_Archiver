@@ -11,10 +11,10 @@
     "url": "zosman.com"
   },
   "scripts": {
-    "test": "xo",
+    "test": "standard",
     "start": "electron .",
     "build": "electron-packager . --out=dist --asar --overwrite --all"
-    },
+  },
   "files": [
     "index.js",
     "index.html",
@@ -26,11 +26,12 @@
   ],
   "dependencies": {
     "electron-debug": "^1.0.0",
+    "standard": "^8.6.0",
     "yarn": "^0.18.1"
   },
   "devDependencies": {
     "devtron": "^1.1.0",
     "electron": "^1.3.3",
     "electron-packager": "^8.0.0"
-    }
+  }
 }
