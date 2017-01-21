@@ -26,10 +26,10 @@ function down () {
     mv('/Users/ZachO/Code/The_Archiver/tests/' + filesList[i], '/Users/ZachO/Code/The_Archiver/' + filesList[i], function (err) {
       if (typeof err !== 'undefined') {
           // the variable is defined
-        console.log('error on down function file: ' + filesList[i].toString())
+        console.log('error on down function file: ' + filesList[i])
         console.log(translate(err.code))
       } else {
-        console.log('down function completed succesfully on file: ' + filesList[i].toString())
+        console.log('down function completed succesfully on file: ' + filesList[i])
       }
     })
   }
@@ -39,10 +39,10 @@ function up () {
     mv('/Users/ZachO/Code/The_Archiver/' + filesList[i], '/Users/ZachO/Code/The_Archiver/tests/' + filesList[i], function (err) {
       if (typeof err !== 'undefined') {
           // the variable is defined
-        console.log('error on up function file: ' + filesList[i].toString())
+        console.log('error on up function file: ' + filesList[i])
         console.log(translate(err.code))
       } else {
-        console.log('up function completed succesfully on file: ' + filesList[i].toString())
+        console.log('up function completed succesfully on file: ' + filesList[i])
       }
     })
   }
