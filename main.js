@@ -22,7 +22,7 @@ console.log(filesList)
 //   console.log('Error in file moving')
 // })
 function down () {
-  var dError = false
+  let dError = false
   filesList.forEach(function(file){
     mv('/Users/ZachO/Code/The_Archiver/tests/' + file, '/Users/ZachO/Code/The_Archiver/' + file, function (err) {
       if (typeof err !== 'undefined') {
@@ -41,8 +41,7 @@ function down () {
   // }
   // else{
   //   document.getElementById('errorReadout').innerHTML = "<blue style = 'color:lightblue'>Down function succeded</blue>"
-  // }
-  // CURRENT ERROR WITH THIS IS THAT THE ASYNC FUNCTION SETS DERROR TO FALSE TOO LATE AND THIS FUNCTION HAS ALREADY BEEN DONE BY THE TIME IT GETS SET.
+  // } // MAKE THIS A FUNCTION // CURRENT ERROR WITH THIS IS THAT THE ASYNC FUNCTION SETS DERROR TO FALSE TOO LATE AND THIS FUNCTION HAS ALREADY BEEN DONE BY THE TIME IT GETS SET.
 }
 function up () {
   filesList.forEach(function(file){
@@ -95,3 +94,7 @@ function translate (statement) {
       return ('error code "' + statement + '" is not in the translate function')
   }
 }
+  function notifyUser (content, color){
+    //color will be a #FFFFFF style input
+    //content will be the actual text
+  }
