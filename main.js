@@ -27,6 +27,7 @@ function down () {
       if (typeof err !== 'undefined') {
           // the variable is defined
         console.log('error on down function file: ' + file)
+        //printing the translation of the error code
         console.log(translate(err.code))
       } else {
         console.log('down function completed succesfully on file: ' + file)
@@ -44,7 +45,7 @@ function up () {
         console.log(translate(err.code))
         //printing the tranlation of the error code
       } else {
-        console.log('down function completed succesfully on file: ' + file)
+        console.log('up function completed succesfully on file: ' + file)
       }
     })
   })
