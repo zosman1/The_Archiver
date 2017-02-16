@@ -1,8 +1,8 @@
 const fs = require('fs')
 const mv = require('mv')
-
-function test () {
-  console.log('hi')
+let lastDone = 'up' // imporant var used around main.js
+function sayHi () {
+  console.log('Hai There!')
 }
 
 const testFolder = '/Users/ZachO/Code/The_Archiver/tests'
@@ -22,40 +22,50 @@ console.log(filesList)
 //   console.log('Error in file moving')
 // })
 function down () {
-  filesList.forEach(function(file){
-    mv('/Users/ZachO/Code/The_Archiver/tests/' + file, '/Users/ZachO/Code/The_Archiver/' + file, function (err) {
-      if (typeof err !== 'undefined') {
-          // the variable is defined
-        console.log('error on down function file: ' + file)
-        //printing the translation of the error code
-        console.log(translate(err.code))
-        //printing the tranlation of the error code
-        notifyUser("Down function has failed","red")
-        //notifying the frontend that something has gone wrong, oops
+  if (lastDone == 'down') {
+    notifyUser('The files are already down dumbass.', 'blue')
+  } else {
+    lastDone = 'down'
+    filesList.forEach(function (file) {
+      mv('/Users/ZachO/Code/The_Archiver/tests/' + file, '/Users/ZachO/Code/The_Archiver/' + file, function (err) {
+        if (typeof err !== 'undefined') {
+            // the variable is defined
+          console.log('error on down function file: ' + file)
+          // printing the translation of the error code
+          console.log(translate(err.code))
+          // printing the tranlation of the error code
+          notifyUser('Down function has failed', 'red')
+          // notifying the frontend that something has gone wrong, oops
         } else {
-        console.log('down function completed succesfully on file: ' + file)
-        clearNotifications()
-      }
+          console.log('down function completed succesfully on file: ' + file)
+          clearNotifications()
+        }
+      })
     })
-  })
+  }
 }
 function up () {
-  filesList.forEach(function(file){
-    mv('/Users/ZachO/Code/The_Archiver/' + file, '/Users/ZachO/Code/The_Archiver/tests/' + file, function (err) {
-      if (typeof err !== 'undefined') {
-          // the variable is defined
-        console.log('error on down function file: ' + file)
-        //printing an error statment on what file errored
-        console.log(translate(err.code))
-        //printing the tranlation of the error code
-        notifyUser("Up function has failed","red")
-        //notifying the frontend that something has gone wrong, oops
-      } else {
-        console.log('up function completed succesfully on file: ' + file)
-        clearNotifications()
-      }
+  if (lastDone == 'up') {
+    notifyUser('The files are already up dumbass.', 'blue')
+  } else {
+    lastDone = 'up'
+    filesList.forEach(function (file) {
+      mv('/Users/ZachO/Code/The_Archiver/' + file, '/Users/ZachO/Code/The_Archiver/tests/' + file, function (err) {
+        if (typeof err !== 'undefined') {
+            // the variable is defined
+          console.log('error on down function file: ' + file)
+          // printing an error statment on what file errored
+          console.log(translate(err.code))
+          // printing the tranlation of the error code
+          notifyUser('Up function has failed', 'red')
+          // notifying the frontend that something has gone wrong, oops
+        } else {
+          console.log('up function completed succesfully on file: ' + file)
+          clearNotifications()
+        }
+      })
     })
-  })
+  }
 }
 
 function onedown () {
@@ -95,11 +105,11 @@ function translate (statement) {
 }
 // this function sends a notifcation to the main screen to notify the user of something
 function notifyUser (content, color) {
-  //color will be a #FFFFFF style input
-  //content will be the actual text
-  document.getElementById('userNotification').innerHTML = ("<h5 style = 'color:" + color + "'>" + content + "</h5>")
+  // color will be a #FFFFFF style input
+  // content will be the actual text
+  document.getElementById('userNotification').innerHTML = ("<h5 style = 'color:" + color + "'>" + content + '</h5>')
 }
-//this function will clear notifcations from the main screen
-function clearNotifications (){
-  document.getElementById('userNotification').innerHTML = ("")
+// this function will clear notifcations from the main screen
+function clearNotifications () {
+  document.getElementById('userNotification').innerHTML = ('')
 }
