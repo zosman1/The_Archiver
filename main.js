@@ -22,7 +22,6 @@ console.log(filesList)
 //   console.log('Error in file moving')
 // })
 function down () {
-  let dError = false
   filesList.forEach(function(file){
     mv('/Users/ZachO/Code/The_Archiver/tests/' + file, '/Users/ZachO/Code/The_Archiver/' + file, function (err) {
       if (typeof err !== 'undefined') {
@@ -30,18 +29,15 @@ function down () {
         console.log('error on down function file: ' + file)
         //printing the translation of the error code
         console.log(translate(err.code))
-        dError = true
-      } else {
+        //printing the tranlation of the error code
+        notifyUser("Down function has failed","red")
+        //notifying the frontend that something has gone wrong, oops
+        } else {
         console.log('down function completed succesfully on file: ' + file)
+        clearNotifications()
       }
     })
   })
-  // if (dError == true){
-  //   document.getElementById('errorReadout').innerHTML = "<red style = 'color:red'>Down function failed</red>"
-  // }
-  // else{
-  //   document.getElementById('errorReadout').innerHTML = "<blue style = 'color:lightblue'>Down function succeded</blue>"
-  // } // MAKE THIS A FUNCTION // CURRENT ERROR WITH THIS IS THAT THE ASYNC FUNCTION SETS DERROR TO FALSE TOO LATE AND THIS FUNCTION HAS ALREADY BEEN DONE BY THE TIME IT GETS SET.
 }
 function up () {
   filesList.forEach(function(file){
@@ -52,8 +48,11 @@ function up () {
         //printing an error statment on what file errored
         console.log(translate(err.code))
         //printing the tranlation of the error code
+        notifyUser("Up function has failed","red")
+        //notifying the frontend that something has gone wrong, oops
       } else {
         console.log('up function completed succesfully on file: ' + file)
+        clearNotifications()
       }
     })
   })
@@ -94,7 +93,13 @@ function translate (statement) {
       return ('error code "' + statement + '" is not in the translate function')
   }
 }
-  function notifyUser (content, color){
-    //color will be a #FFFFFF style input
-    //content will be the actual text
-  }
+// this function sends a notifcation to the main screen to notify the user of something
+function notifyUser (content, color) {
+  //color will be a #FFFFFF style input
+  //content will be the actual text
+  document.getElementById('userNotification').innerHTML = ("<h5 style = 'color:" + color + "'>" + content + "</h5>")
+}
+//this function will clear notifcations from the main screen
+function clearNotifications (){
+  document.getElementById('userNotification').innerHTML = ("")
+}
