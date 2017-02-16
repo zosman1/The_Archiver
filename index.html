@@ -1,23 +1,31 @@
 <!doctype html>
 <html>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
-	<script src="main.js"></script>
-	<head>
-		<meta charset="utf-8">
-		<title>Electron boilerplate</title>
-		<link rel="stylesheet" href="index.css">
-	</head>
-	<body>
-		<div class="container">
-			<header>
-				<h1>The Archiver</h1>
-				<h4 style="font-weight: 100">Use up and down to move files</h4>
-				<button type="button" class="btn btn-primary btn-lg" onclick="up()" style="">Up</button>
-				<button type="button" class="btn btn-secondary btn-lg" onclick="down()" style="">Down</button>
-			</header>
-			<section class="main"></section>
-			<footer></footer>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+<script src="main.js"></script>
+
+<head>
+	<meta charset="utf-8">
+	<title>Electron boilerplate</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h1>The Archiver</h1>
+			<h4 style="font-weight: 100">Use up and down to move files</h4>
+			<button type="button" class="btn btn-primary btn-lg" onclick="up()" style="">Up</button>
+			<button type="button" class="btn btn-secondary btn-lg" onclick="down()" style="">Down</button>
+		</header>
+
+		<div>
+			<h5 id="errorReadout"></h5>
 		</div>
-	</body>
+
+		<section class="main"></section>
+		<footer></footer>
+	</div>
+</body>
+
 </html>

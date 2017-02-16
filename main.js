@@ -22,6 +22,7 @@ console.log(filesList)
 //   console.log('Error in file moving')
 // })
 function down () {
+  var dError = false
   filesList.forEach(function(file){
     mv('/Users/ZachO/Code/The_Archiver/tests/' + file, '/Users/ZachO/Code/The_Archiver/' + file, function (err) {
       if (typeof err !== 'undefined') {
@@ -29,11 +30,19 @@ function down () {
         console.log('error on down function file: ' + file)
         //printing the translation of the error code
         console.log(translate(err.code))
+        dError = true
       } else {
         console.log('down function completed succesfully on file: ' + file)
       }
     })
   })
+  // if (dError == true){
+  //   document.getElementById('errorReadout').innerHTML = "<red style = 'color:red'>Down function failed</red>"
+  // }
+  // else{
+  //   document.getElementById('errorReadout').innerHTML = "<blue style = 'color:lightblue'>Down function succeded</blue>"
+  // }
+  // CURRENT ERROR WITH THIS IS THAT THE ASYNC FUNCTION SETS DERROR TO FALSE TOO LATE AND THIS FUNCTION HAS ALREADY BEEN DONE BY THE TIME IT GETS SET.
 }
 function up () {
   filesList.forEach(function(file){
