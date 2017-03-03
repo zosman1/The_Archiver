@@ -6,8 +6,8 @@ function sayHello () {
   console.log('Hello World!')
 }
 
-const awayFolder = '/Users/ZachO/Code/The_Archiver/tests/'
-const homeFolder = '/Users/ZachO/Code/The_Archiver/'
+const awayFolder = '/Volumes/Samsung_T3/Test_Folder/'
+const homeFolder = '/Users/ZachO/Code/The_Archiver/vmTests/'
 
 var filesList = []
 fs.readdir(awayFolder, (err, files) => {
@@ -23,7 +23,7 @@ function down () {
   } else {
     lastDone = 'down'
     filesList.forEach(function (file) {
-      mv(awayFolder + file, homeFolder + file, function (err) {
+      fs.move(awayFolder + file, homeFolder + file, function (err) {
         if (typeof err !== 'undefined') {
             // the variable is defined
           console.log('error on down function file: ' + file)
@@ -47,7 +47,7 @@ function up () {
   } else {
     lastDone = 'up'
     filesList.forEach(function (file) {
-      mv(homeFolder + file, awayFolder + file, function (err) {
+      fs.move(homeFolder + file, awayFolder + file, function (err) {
         if (typeof err !== 'undefined') {
             // the variable is defined
           console.log('error on down function file: ' + file)
