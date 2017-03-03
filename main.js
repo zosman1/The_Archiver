@@ -1,5 +1,4 @@
-const fs = require('fs')
-const mv = require('mv')
+const fs = require('fs-extra')
 let lastDone = 'up' // imporant var used around main.js
 
 function sayHello () {
@@ -24,12 +23,12 @@ function down () {
     lastDone = 'down'
     filesList.forEach(function (file) {
       fs.move(awayFolder + file, homeFolder + file, function (err) {
-        if (typeof err !== 'undefined') {
+        if (err != null) {
             // the variable is defined
           console.log('error on down function file: ' + file)
-          // printing the translation of the error code
-          console.log(translate(err.code))
-          // printing the tranlation of the error code
+          // printing what file this failed on
+          console.log(err)
+          // printing the error code
           notifyUser('Down function has failed', 'red')
           // notifying the frontend that something has gone wrong, oops
         } else {
@@ -48,12 +47,12 @@ function up () {
     lastDone = 'up'
     filesList.forEach(function (file) {
       fs.move(homeFolder + file, awayFolder + file, function (err) {
-        if (typeof err !== 'undefined') {
+        if (err != null) {
             // the variable is defined
           console.log('error on down function file: ' + file)
-          // printing an error statment on what file errored
-          console.log(translate(err.code))
-          // printing the tranlation of the error code
+          // printing what file this failed on
+          console.log(err)
+          // printing the error code
           notifyUser('Up function has failed', 'red')
           // notifying the frontend that something has gone wrong, oops
         } else {
@@ -91,7 +90,8 @@ function up () {
 // }
 
 function translate (statement) {
-  // translate err.code responces into plain english
+  // translate err responces into plain english
+  // will need to be rewritten due to changed library
   switch (statement) {
     case 'ENOENT':
       return 'ERROR: Code can not find the file to move'
@@ -108,7 +108,7 @@ function translate (statement) {
 function notifyUser (content, color, time) {
   // color will be a value acceptable by css
   // content will be the actual text
-  document.getElementById('userNotification').innerHTML = ("<h5 style = 'font-weight: 300; color:" + color + "'>" + content + '</h5>')
+  document.getElementById('userNotification').innerHTML = ("<h5 style = 'font-weight: 400; color:" + color + "'>" + content + '</h5>')
   clearNotifications(time)
   // for now will keep this as a seperate class
 }
