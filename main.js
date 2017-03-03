@@ -6,10 +6,11 @@ function sayHello () {
   console.log('Hello World!')
 }
 
-const testFolder = '/Users/ZachO/Code/The_Archiver/tests'
+const awayFolder = '/Users/ZachO/Code/The_Archiver/tests/'
+const homeFolder = '/Users/ZachO/Code/The_Archiver/'
 
 var filesList = []
-fs.readdir(testFolder, (err, files) => {
+fs.readdir(awayFolder, (err, files) => {
   files.forEach(file => {
     console.log(file)
     filesList.push(file)
@@ -22,7 +23,7 @@ function down () {
   } else {
     lastDone = 'down'
     filesList.forEach(function (file) {
-      mv('/Users/ZachO/Code/The_Archiver/tests/' + file, '/Users/ZachO/Code/The_Archiver/' + file, function (err) {
+      mv(awayFolder + file, homeFolder + file, function (err) {
         if (typeof err !== 'undefined') {
             // the variable is defined
           console.log('error on down function file: ' + file)
@@ -46,7 +47,7 @@ function up () {
   } else {
     lastDone = 'up'
     filesList.forEach(function (file) {
-      mv('/Users/ZachO/Code/The_Archiver/' + file, '/Users/ZachO/Code/The_Archiver/tests/' + file, function (err) {
+      mv(homeFolder + file, awayFolder + file, function (err) {
         if (typeof err !== 'undefined') {
             // the variable is defined
           console.log('error on down function file: ' + file)
@@ -118,6 +119,7 @@ function clearNotifications (time) {
   // FUTURE NOTE: will want to make notification fade out to improve ux
   // Takes in tiem as miliseconds ex: 1000 = 1 second
   if (running = true){
+    // currently doesent do anything
     // present issue, runs over itself.
     // fix: will have to kill the proccess when its reactived and its not done and start it over
     setTimeout(function () {
