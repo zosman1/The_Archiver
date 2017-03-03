@@ -23,7 +23,7 @@ console.log(filesList)
 // })
 function down () {
   if (lastDone == 'down') {
-    notifyUser('The files are already down dumbass.', 'blue')
+    notifyUser('The Files Are Currently Down On The Local Machine.', 'blue')
   } else {
     lastDone = 'down'
     filesList.forEach(function (file) {
@@ -46,7 +46,7 @@ function down () {
 }
 function up () {
   if (lastDone == 'up') {
-    notifyUser('The files are already up dumbass.', 'blue')
+    notifyUser('The Files Are Currently Up On The External Drive', 'blue')
   } else {
     lastDone = 'up'
     filesList.forEach(function (file) {
