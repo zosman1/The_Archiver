@@ -88,21 +88,21 @@ function up () {
 //     }
 //   })
 // }
-
-function translate (statement) {
-  // translate err responces into plain english
-  // will need to be rewritten due to changed library
-  switch (statement) {
-    case 'ENOENT':
-      return 'ERROR: Code can not find the file to move'
-      break
-    case 'Zosman':
-      return 'topkek'
-      break
-    default:
-      return ('error code "' + statement + '" is not in the translate function')
-  }
-}
+// 
+// function translate (statement) {
+//   // translate err responces into plain english
+//   // will need to be rewritten due to changed library
+//   switch (statement) {
+//     case 'ENOENT':
+//       return 'ERROR: Code can not find the file to move'
+//       break
+//     case 'Zosman':
+//       return 'topkek'
+//       break
+//     default:
+//       return ('error code "' + statement + '" is not in the translate function')
+//   }
+// }
 
 // This function sends a notifcation to the main screen to notify the user of something
 function notifyUser (content, color, time) {
