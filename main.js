@@ -64,46 +64,6 @@ function up () {
   }
 }
 
-// DEPRECIATED FUNCTIONS USED FOR CONCEPTUAL TESTING
-// function onedown () {
-//   mv('/Users/ZachO/Code/The_Archiver/tests/test1.txt', '/Users/ZachO/Code/The_Archiver/test1.txt', function (err) {
-//     if (typeof err !== 'undefined') {
-//         // the variable is defined
-//       console.log('error on down function')
-//       console.log(translate(err.code))
-//     } else {
-//       console.log('down function completed succesfully')
-//     }
-//   })
-// }
-//
-// function oneup () {
-//   mv('/Users/ZachO/Code/The_Archiver/test1.txt', '/Users/ZachO/Code/The_Archiver/tests/test1.txt', function (err) {
-//     if (typeof err !== 'undefined') {
-//         // the variable is defined
-//       console.log('error on up function')
-//       console.log(translate(err.code))
-//     } else {
-//       console.log('up function completed succesfully')
-//     }
-//   })
-// }
-// 
-// function translate (statement) {
-//   // translate err responces into plain english
-//   // will need to be rewritten due to changed library
-//   switch (statement) {
-//     case 'ENOENT':
-//       return 'ERROR: Code can not find the file to move'
-//       break
-//     case 'Zosman':
-//       return 'topkek'
-//       break
-//     default:
-//       return ('error code "' + statement + '" is not in the translate function')
-//   }
-// }
-
 // This function sends a notifcation to the main screen to notify the user of something
 function notifyUser (content, color, time) {
   // color will be a value acceptable by css
@@ -118,7 +78,7 @@ function clearNotifications (time) {
   let running = true
   // FUTURE NOTE: will want to make notification fade out to improve ux
   // Takes in tiem as miliseconds ex: 1000 = 1 second
-  if (running = true){
+  if (running = true) {
     // currently doesent do anything
     // present issue, runs over itself.
     // fix: will have to kill the proccess when its reactived and its not done and start it over
