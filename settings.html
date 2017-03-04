@@ -7,7 +7,7 @@
 <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
 <script src="https://use.fontawesome.com/685fd60cd8.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
-<script src="main.js"></script>
+<script src="settings.js"></script>
 <script>if (window.module) module = window.module;</script>
 
 <head>
@@ -21,7 +21,7 @@
 		<i class="fa fa-home" aria-hidden="true"></i>
 	</a>
 	<h4 style="font-weight: 200; padding-top: 1%; text-align: center">Settings</h4>
-	<form class ="settings">
+	<form class ="settings" action="#">
 		<div class="form-group">
 			<label for="exampleInputEmail1">Home Path</label>
 			<input type="text" class="form-control" id="homePath" placeholder="Ex:/Users/MyUsername/Desktop/VM's/">
@@ -30,7 +30,8 @@
 			<label for="exampleInputPassword1">Away Path</label>
 			<input type="text" class="form-control" id="awayPath" placeholder="Ex:/Volumes/MyDrive/Vm's/Windows/">
 		</div>
-		<button type="submit" class="btn btn-primary">Submit Changes</button>
+		<button type="submit" onclick="submitSettings()"class="btn btn-primary">Submit Changes</button>
+		<notification id="userNotification"></notification>
 	</form>
 </body>
 

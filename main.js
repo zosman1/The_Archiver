@@ -73,6 +73,10 @@ function notifyUser (content, color, time) {
   // for now will keep this as a seperate class
 }
 
+exports.notifyUser = function nU (content, color, time){
+  notifyUser(content, color, time)
+}
+
 // This function will clear notifcations from the main screen
 function clearNotifications (time) {
   let running = true
