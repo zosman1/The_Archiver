@@ -20,7 +20,9 @@
     "index.js",
     "index.html",
     "index.css",
-    "main.js"
+    "main.js",
+    "settings.html",
+    "settings.cfg"
   ],
   "keywords": [
     "electron-app",
@@ -28,6 +30,7 @@
   ],
   "dependencies": {
     "electron-debug": "^1.0.0",
+    "electron-settings": "^2.2.2",
     "fs-extra": "^2.0.0",
     "standard": "^8.6.0",
     "yarn": "^0.19.1"
