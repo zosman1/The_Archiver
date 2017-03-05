@@ -18,6 +18,8 @@ function createMainWindow() {
 	const win = new electron.BrowserWindow({
 		width: 600,
 		height: 400,
+		// eslint-disable-next-line no-undef
+		icon: path.join(__dirname, "assets/icons/png/64x64.png"),
 	});
 
 	win.loadURL(`file://${__dirname}/index.html`);
