@@ -13,7 +13,7 @@
   "scripts": {
     "test": "eslint *",
     "start": "electron .",
-    "build": "electron-packager . --out=dist --asar --overwrite --all",
+    "build": "electron-packager . --out=dist --asar --overwrite --all --icon=assets/icons/mac/icon.icns",
     "fix": "eslint * --fix"
   },
   "files": [
