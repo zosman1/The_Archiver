@@ -18,6 +18,7 @@ fs.readdir(awayFolder, (err, files) => {
 	});
 });
 
+// eslint-disable-next-line no-unused-vars
 function down() {
 	if (lastDone == "down") {
 		notifyUser("The Files Are Currently Down On The Local Machine.", "blue", 2500);
@@ -42,6 +43,7 @@ function down() {
 	}
 }
 
+// eslint-disable-next-line no-unused-vars
 function up() {
 	if (lastDone == "up") {
 		notifyUser("The Files Are Currently Up On The External Drive.", "blue", 2500);
