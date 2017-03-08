@@ -4,30 +4,29 @@
 > By Zosman
 
 
-## Dev
 
-```
-$ npm install
-```
+## Development
+**You must have npm installed**
 
+Clone the repo with `$ git clone https://github.com/zosman1/The_Archiver.git`
+
+Install yarn (optional but recomended) - [Yarnpkg](https://yarnpkg.com/en/docs/install)  
+if not replace `yarn` with `npm` for the following
+
+### Install Dependencies
+```
+$ yarn install
+```
 ### Run
 
 ```
-$ npm start
+$ yarn start
 ```
-
 ### Build
 
 ```
-$ npm run build
+$ yarn run build
 ```
+### License
 
-Builds the app for macOS, Linux, and Windows, using [electron-packager](https://github.com/electron-userland/electron-packager).
-
-The commands use a bind in the package.json with the prefix `./node_modules/.bin/`
-
-To check debugging tools check out https://github.com/sindresorhus/electron-debug
-
-## License
-
-MIT © [Zosman](http://zosman.com)
+Apache-2.0 © Zosman
