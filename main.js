@@ -1,4 +1,5 @@
 const fs = require("fs-extra");
+const settings = require("electron-settings");
 
 let lastDone = "up"; // imporant var used around main.js
 
@@ -7,8 +8,17 @@ function sayHello() {
 	console.log("Hello World!");
 }
 
-const awayFolder = "/Volumes/Samsung_T3/Test_Folder/";
-const homeFolder = "/Users/ZachO/Code/The_Archiver/vmTests/";
+// Runs on file init, creates nessacary values for the file
+let homeFolder = "";
+let awayFolder = "";
+settings.get("paths.home").then((val) => {
+	homeFolder = val;
+	console.log(`awayFolder: ${val}`);
+});
+settings.get("paths.away").then((val) => {
+	awayFolder = val;
+	console.log(`homeFolder: ${val}`);
+});
 
 const filesList = [];
 fs.readdir(awayFolder, (err, files) => {
@@ -17,6 +27,8 @@ fs.readdir(awayFolder, (err, files) => {
 		filesList.push(file);
 	});
 });
+// End file init
+
 
 // eslint-disable-next-line no-unused-vars
 function down() {
