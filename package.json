@@ -1,7 +1,7 @@
 {
   "name": "the-archiver",
   "productName": "TheArchiver",
-  "version": "0.1",
+  "version": "0.0.1",
   "description": "My legendary app",
   "license": "Apache",
   "repository": "zosman1/the-archiver",
@@ -13,7 +13,7 @@
   "scripts": {
     "test": "eslint *",
     "start": "electron .",
-    "build": "electron-packager . --out=dist --asar --overwrite --all --icon=assets/icons/mac/icon.icns",
+    "build": "electron-packager . --out=dist --asar --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns",
     "fix": "eslint * --fix"
   },
   "files": [
@@ -29,13 +29,13 @@
     "electron"
   ],
   "dependencies": {
-    "electron": "^1.6.1",
-    "electron-debug": "^1.1.0",
     "electron-settings": "^2.2.2",
     "fs-extra": "^2.0.0"
   },
   "devDependencies": {
     "devtron": "^1.1.0",
+    "electron": "^1.6.2",
+    "electron-debug": "^1.1.0",
     "electron-packager": "^8.0.0",
     "eslint": "^3.17.0",
     "eslint-config-airbnb-base": "^11.1.1",
