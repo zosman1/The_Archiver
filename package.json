@@ -22,20 +22,20 @@
     "index.css",
     "main.js",
     "settings.html",
-    "settings.cfg"
-  ],
+    "settings.js"
+      ],
   "keywords": [
     "electron-app",
     "electron"
   ],
   "dependencies": {
+    "electron-debug": "^1.1.0",
     "electron-settings": "^2.2.2",
     "fs-extra": "^2.0.0"
   },
   "devDependencies": {
     "devtron": "^1.1.0",
     "electron": "^1.6.2",
-    "electron-debug": "^1.1.0",
     "electron-packager": "^8.0.0",
     "eslint": "^3.17.0",
     "eslint-config-airbnb-base": "^11.1.1",
