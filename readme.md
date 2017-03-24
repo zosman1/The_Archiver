@@ -29,4 +29,4 @@ $ yarn run build
 ```
 ### License
 
-Apache-2.0 © Zosman
+AGPL-3.0 © Zosman
