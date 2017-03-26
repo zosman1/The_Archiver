@@ -1,17 +1,17 @@
 {
-  "name": "the-archiver",
-  "productName": "TheArchiver",
+  "name": "the archiver",
+  "productName": "The Archiver",
   "version": "0.0.1",
-  "description": "My legendary app",
+  "description": "Virtual Machine Managment",
   "license": "AGPL-3.0",
-  "repository": "zosman1/the-archiver",
+  "repository": "https://github.com/zosman1/The_Archiver",
   "author": {
     "name": "Zosman",
     "email": "zach.osman@gmail.com",
-    "url": "zosman.com"
+    "url": "http://zosman.com"
   },
   "scripts": {
-    "test": "eslint *",
+    "test": "eslint *.js",
     "start": "electron .",
     "build": "electron-packager . --out=dist --asar --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns",
     "fix": "eslint * --fix"
