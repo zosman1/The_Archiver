@@ -1,9 +1,6 @@
-# The-Archiver
-
+# The Archiver
 
 > By Zosman
-
-
 
 ## Development
 **You must have npm installed**
@@ -14,6 +11,7 @@ Install yarn (optional but recomended) - [Yarnpkg](https://yarnpkg.com/en/docs/i
 if not replace `yarn` with `npm` for the following
 
 ### Install Dependencies
+
 ```
 $ yarn install
 ```
@@ -23,6 +21,7 @@ $ yarn install
 $ yarn start
 ```
 ### Build
+> Side note, only builds for macOs currently
 
 ```
 $ yarn run build
