@@ -2,6 +2,7 @@
 
 > By Zosman
 
+:warning: **This project is still in development, we are not responsible for any file loss** :warning:
 ## Development
 **You must have npm installed**
 
