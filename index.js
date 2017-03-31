@@ -18,7 +18,9 @@ function onClosed() {
 function createMainWindow() {
 	const win = new electron.BrowserWindow({
 		width: 600,
+		minWidth: 400,
 		height: 400,
+		minHeight: 350,
 		icon: path.join(__dirname, "assets/icons/png/64x64.png")
 	});
 
