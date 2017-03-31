@@ -1,4 +1,4 @@
-# The Archiver
+# The Archiver [![npm](https://img.shields.io/npm/v/npm.svg)]() [![version](https://img.shields.io/badge/version-v0.1.0-red.svg)]() 
 
 > By Zosman
 
