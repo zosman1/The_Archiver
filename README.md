@@ -1,4 +1,4 @@
-# The Archiver [![npm](https://img.shields.io/npm/v/npm.svg)]() [![version](https://img.shields.io/badge/version-v0.1.0-red.svg)]() 
+# The Archiver [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com) [![version](https://img.shields.io/badge/version-v0.1.0-red.svg)](https://github.com/zosman1/The_Archiver/releases/tag/v0.1.0-Prototype) 
 
 > By Zosman
 
