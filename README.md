@@ -1,4 +1,4 @@
-# The Archiver [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com) [![version](https://img.shields.io/badge/version-v0.1.0-red.svg)](https://github.com/zosman1/The_Archiver/releases/tag/v0.1.0-Prototype) [![Build Status](https://travis-ci.org/zosman1/The_Archiver.svg?branch=master)](https://travis-ci.org/zosman1/The_Archiver)
+# The Archiver [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com) [![version](https://img.shields.io/badge/version-v0.1.0-red.svg)](https://github.com/zosman1/The_Archiver/releases/tag/v0.1.0-Prototype) [![Build Status](https://travis-ci.org/zosman1/The_Archiver.svg?branch=master)](https://travis-ci.org/zosman1/The_Archiver) [![Dependencies](https://img.shields.io/librariesio/github/zosman1/The_Archiver.svg)](https://libraries.io/github/zosman1/The_Archiver)
 
 > By Zosman
 
