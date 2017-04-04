@@ -1,5 +1,5 @@
 {
-  "name": "TheArchiver",
+  "name": "the-archiver",
   "productName": "The Archiver",
   "version": "0.1.0",
   "description": "Virtual Machine Managment",
@@ -14,7 +14,7 @@
     "test": "eslint *.js",
     "start": "electron .",
     "build": "electron-packager . --out=dist --asar --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns",
-    "fix": "eslint * --fix"
+    "fix": "eslint *.js --fix"
   },
   "files": [
     "index.js",
