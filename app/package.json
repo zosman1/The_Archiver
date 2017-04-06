@@ -23,14 +23,14 @@
     "main.js",
     "settings.html",
     "settings.js"
-      ],
+  ],
   "keywords": [
     "electron-app",
     "electron"
   ],
   "dependencies": {
     "electron-debug": "^1.1.0",
-    "electron-settings": "^2.2.2",
+    "electron-settings": "^3.0.14",
     "fs-extra": "^2.0.0"
   },
   "devDependencies": {
@@ -38,6 +38,6 @@
     "electron": "^1.6.2",
     "electron-packager": "^8.0.0",
     "eslint": "^3.17.0",
-    "yarn": "^0.21.3"
+    "yarn": "^0.22.0"
   }
 }

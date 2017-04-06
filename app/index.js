@@ -1,5 +1,7 @@
 const electron = require("electron");
 const path = require("path");
+const ipc = require("electron").ipcMain;
+const dialog = require("electron").dialog;
 
 const app = electron.app;
 
@@ -21,7 +23,7 @@ function createMainWindow() {
 		minWidth: 400,
 		height: 400,
 		minHeight: 350,
-		icon: path.join(__dirname, "assets/icons/png/64x64.png")
+		icon: path.join(__dirname, "assets/icons/png/64x64.png"),
 	});
 
 	win.loadURL(`file://${__dirname}/index.html`);
@@ -44,4 +46,12 @@ app.on("activate", () => {
 
 app.on("ready", () => {
 	mainWindow = createMainWindow();
+});
+
+ipc.on("error-down", function (event) {
+	dialog.showErrorBox("An Error Has Occurred!", "An error has occurred in the down function, please check console for more info. ");
+});
+
+ipc.on("error-up", function (event) {
+	dialog.showErrorBox("An Error Has Occurred!", "An error has occurred in the up function, please check console for more info. ");
 });
