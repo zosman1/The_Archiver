@@ -1,9 +1,10 @@
 const electron = require("electron");
 const path = require("path");
-const dialog = require("electron").dialog;
 
 const app = electron.app;
+const dialog = electron.dialog;
 const ipc = electron.ipcMain;
+
 
 
 // adds debug features like hotkeys for triggering dev tools and reload
