@@ -22,8 +22,10 @@ function moveFiles(direction){
 	if (!ready) return;
 	if (direction != filelocation){
 		filelocation = direction;
+		ready = false;
 		fs.move(settings.get(fileArgs[direction][0]), settings.get(fileArgs[direction][1]), (err) => {
 			errorHandle(err, direction);
+			ready = true;
 		});
 	}		
 }
