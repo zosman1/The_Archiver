@@ -1,6 +1,5 @@
 const fs = require("fs-extra");
 const settings = require("electron-settings");
-const path = require("path");
 const ipc = require("electron").ipcRenderer;
 
 let ready = false;
@@ -65,9 +64,8 @@ function notifyUser(content, color, time) {
 	}, time);
 	updateDisplay();
 }
-module.exports.notifyUser = function nU(content, color, time){
-	notifyUser(content, color, time);
-};
+module.exports.notifyUser = notifyUser;
+
 function updateDisplay() {
 	var notifElem = document.getElementById("userNotification");
 	if (runningNotifications.length) {
