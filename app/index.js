@@ -25,7 +25,7 @@ function createMainWindow() {
 		minWidth: 400,
 		height: 400,
 		minHeight: 350,
-		icon: path.join(__dirname, "assets/icons/png/64x64.png"),
+		icon: path.join(__dirname, "assets/icons/png/64x64.png")
 	});
 
 	win.loadURL(`file://${__dirname}/index.html`);
@@ -50,10 +50,10 @@ app.on("ready", () => {
 	mainWindow = createMainWindow();
 });
 
-ipc.on("error-down", function (event) {
+ipc.on("error-down", function () {
 	dialog.showErrorBox("An Error Has Occurred!", "An error has occurred in the down function, please check console for more info. ");
 });
 
-ipc.on("error-up", function (event) {
+ipc.on("error-up", function () {
 	dialog.showErrorBox("An Error Has Occurred!", "An error has occurred in the up function, please check console for more info. ");
 });
