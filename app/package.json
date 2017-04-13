@@ -5,6 +5,7 @@
   "description": "Virtual Machine Managment",
   "license": "AGPL-3.0",
   "repository": "https://github.com/zosman1/The_Archiver",
+  "main": "main.js",
   "author": {
     "name": "Zosman",
     "email": "zach.osman@gmail.com",
@@ -17,10 +18,10 @@
     "fix": "eslint *.js --fix"
   },
   "files": [
-    "index.js",
+    "main.js",
     "index.html",
     "index.css",
-    "main.js",
+    "index.js",
     "settings.html",
     "settings.js"
   ],

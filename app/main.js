@@ -1,79 +1,59 @@
-const fs = require("fs-extra");
-const settings = require("electron-settings");
-const ipc = require("electron").ipcRenderer;
+const electron = require("electron");
+const path = require("path");
 
-let ready = false;
-let filelocation = "up";
-const debug = true;
+const app = electron.app;
+const dialog = electron.dialog;
+const ipc = electron.ipcMain;
 
-function init() {
-	if (settings.has("path.home") && settings.has("path.away")) {
-		ready = true;
+
+
+// adds debug features like hotkeys for triggering dev tools and reload
+require("electron-debug")();
+
+// prevent window being garbage collected
+let mainWindow;
+
+function onClosed() {
+  // dereference the window
+  // for multiple windows store them in an array
+	mainWindow = null;
+}
+
+function createMainWindow() {
+	const win = new electron.BrowserWindow({
+		width: 600,
+		minWidth: 400,
+		height: 400,
+		minHeight: 350,
+		icon: path.join(__dirname, "assets/icons/png/64x64.png")
+	});
+
+	win.loadURL(`file://${__dirname}/index.html`);
+	win.on("closed", onClosed);
+
+	return win;
+}
+
+app.on("window-all-closed", () => {
+	if (process.platform !== "darwin") {
+		app.quit();
 	}
-}
-init();
+});
 
- // eslint-disable-next-line no-unused-vars
-function moveFiles(direction){
-	let fileArgs = {
-		up: ["path.home", "path.away"],
-		down: ["path.away", "path.home"]
-	};
-	if (!ready) return;
-	if (direction != filelocation){
-		ready = false;
-		fs.move(settings.get(fileArgs[direction][0]), settings.get(fileArgs[direction][1]), (err) => {
-			err ? filelocation = direction : errorHandle(err, direction);
-			ready = true;
-		});
-	}		
-}
-
- // eslint-disable-next-line no-unused-vars
-function errorHandle(err, direction){
-	let notifyMessage = {
-		down: ["The Virtual Machine Has Been Moved Down Onto The Local Drive!", "darkgrey", 7000],
-		up: ["The Virtual Machine Has Been Moved Up Onto The External Drive!", "darkgrey", 7000]
-	};
-	let ipcMessage = {
-		down: "error-down",
-		up: "error-up"
-	};
-	let ifError = false;
-	if (err) {
-		// Error callback
-		if (debug) {
-			console.error(`Error on moving ${direction} function: ${err}`);
-			ipc.send(ipcMessage[direction]);
-		}
-		ifError = true;
+app.on("activate", () => {
+	if (!mainWindow) {
+		mainWindow = createMainWindow();
 	}
-	else {
-		if (!ifError) {
-			notifyUser(notifyMessage[direction][0],notifyMessage[direction][1],notifyMessage[direction][2]);
-		}
-	}
-}
+});
 
-// Notify users via HTML Functions
-let runningNotifications = [];
-function notifyUser(content, color, time) {
-	runningNotifications.push([content, color]);
-	setTimeout(function() {
-		runningNotifications.shift();
-		updateDisplay();
-	}, time);
-	updateDisplay();
-}
-module.exports.notifyUser = notifyUser;
+app.on("ready", () => {
+	mainWindow = createMainWindow();
+});
 
-function updateDisplay() {
-	var notifElem = document.getElementById("userNotification");
-	if (runningNotifications.length) {
-		var [content, color] = runningNotifications[0];
-		notifElem.innerHTML = (`<h5 style = 'font-weight: 400; color:${color}'>${content}</h5>`);
-	} else {
-		notifElem.innerHTML = ("");
-	}
-}
-// End notify via HTML functions
+ipc.on("error-down", function () {
+	dialog.showErrorBox("An Error Has Occurred!", "An error has occurred in the down function, please check console for more info. ");
+});
+
+ipc.on("error-up", function () {
+	dialog.showErrorBox("An Error Has Occurred!", "An error has occurred in the up function, please check console for more info. ");
+});
