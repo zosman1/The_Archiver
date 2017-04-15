@@ -1,14 +1,5 @@
 <!doctype html>
 <html>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
-
-<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-<script src="https://use.fontawesome.com/685fd60cd8.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
-<script src="main.js"></script>
-<script>if (window.module) module = window.module;</script>
 
 <head>
 	<meta charset="utf-8">
@@ -24,13 +15,22 @@
 		<header>
 			<h1>The Archiver</h1>
 			<h4 style="font-weight: 100">Use up and down to move files</h4>
-			<button type="button" class="btn btn-primary btn-lg" onclick="up()" style="">Up</button>
-			<button type="button" class="btn btn-secondary btn-lg" onclick="down()" style="">Down</button>
+			<button type="button" class="btn btn-primary btn-lg" onclick="moveFiles('up')" style="">Up</button>
+			<button type="button" class="btn btn-secondary btn-lg" onclick="moveFiles('down')" style="">Down</button>
 			<notification id="userNotification"></notification>
 		</header>
 		<section class="main"></section>
 		<footer></footer>
 	</div>
-</body>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+<script src="https://use.fontawesome.com/685fd60cd8.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+<script src="index.js"></script>
+<script>if (window.module) module = window.module;</script>
+
+</body>
 </html>

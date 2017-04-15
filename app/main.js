@@ -1,109 +1,59 @@
-const fs = require("fs-extra");
-const settings = require("electron-settings");
+const electron = require("electron");
+const path = require("path");
 
-let lastDone = "up"; // imporant var used around main.js
+const app = electron.app;
+const dialog = electron.dialog;
+const ipc = electron.ipcMain;
 
-// eslint-disable-next-line no-unused-vars
-function sayHello() {
-	console.log("Hello World!");
+
+
+// adds debug features like hotkeys for triggering dev tools and reload
+require("electron-debug")();
+
+// prevent window being garbage collected
+let mainWindow;
+
+function onClosed() {
+  // dereference the window
+  // for multiple windows store them in an array
+	mainWindow = null;
 }
 
-// Runs on file init, creates nessacary values for the file
-let homeFolder = "";
-let awayFolder = "";
-settings.get("paths.home").then((val) => {
-	homeFolder = val;
-	console.log(`awayFolder: ${val}`);
-});
-settings.get("paths.away").then((val) => {
-	awayFolder = val;
-	console.log(`homeFolder: ${val}`);
-});
-
-const filesList = [];
-fs.readdir(awayFolder, (err, files) => {
-	files.forEach((file) => {
-		console.log(file);
-		filesList.push(file);
+function createMainWindow() {
+	const win = new electron.BrowserWindow({
+		width: 600,
+		minWidth: 400,
+		height: 400,
+		minHeight: 350,
+		icon: path.join(__dirname, "assets/icons/png/64x64.png")
 	});
+
+	win.loadURL(`file://${__dirname}/index.html`);
+	win.on("closed", onClosed);
+
+	return win;
+}
+
+app.on("window-all-closed", () => {
+	if (process.platform !== "darwin") {
+		app.quit();
+	}
 });
-// End file init
 
-
-// eslint-disable-next-line no-unused-vars
-function down() {
-	if (lastDone == "down") {
-		notifyUser("The Files Are Currently Down On The Local Machine.", "blue", 2500);
-	} else {
-		lastDone = "down";
-		filesList.forEach((file) => {
-			fs.move(awayFolder + file, homeFolder + file, (err) => {
-				if (err != null) {
-            // the variable is defined
-					console.log(`error on down function file: ${file}`);
-          // printing what file this failed on
-					console.log(err);
-          // printing the error code
-					notifyUser("Down function has failed", "red");
-          // notifying the frontend that something has gone wrong, oops
-				} else {
-					console.log(`down function completed succesfully on file: ${file}`);
-					notifyUser("The File Have Succesfully Been Moved Down To The Local Machine!", "grey", 7000);
-				}
-			});
-		});
+app.on("activate", () => {
+	if (!mainWindow) {
+		mainWindow = createMainWindow();
 	}
-}
+});
 
-// eslint-disable-next-line no-unused-vars
-function up() {
-	if (lastDone == "up") {
-		notifyUser("The Files Are Currently Up On The External Drive.", "blue", 2500);
-	} else {
-		lastDone = "up";
-		filesList.forEach((file) => {
-			fs.move(homeFolder + file, awayFolder + file, (err) => {
-				if (err != null) {
-            // the variable is defined
-					console.log(`error on down function file: ${file}`);
-          // printing what file this failed on
-					console.log(err);
-          // printing the error code
-					notifyUser("Up function has failed", "red");
-          // notifying the frontend that something has gone wrong, oops
-				} else {
-					console.log(`up function completed succesfully on file: ${file}`);
-					notifyUser("The File Have Succesfully Been Moved Up To The External Drive!", "grey", 7000);
-				}
-			});
-		});
-	}
-}
+app.on("ready", () => {
+	mainWindow = createMainWindow();
+});
 
-// This function sends a notifcation to the main screen to notify the user of something
-function notifyUser(content, color, time) {
-  // color will be a value acceptable by css
-  // content will be the actual text
-	document.getElementById("userNotification").innerHTML = (`<h5 style = 'font-weight: 400; color:${color}'>${content}</h5>`);
-	clearNotifications(time);
-  // for now will keep this as a seperate class
-}
+ipc.on("error-down", function () {
+	dialog.showErrorBox("An Error Has Occurred!", "An error has occurred in the down function, please check console for more info. ");
+});
 
-exports.notifyUser = function nU(content, color, time) {
-	notifyUser(content, color, time);
-};
-
-// This function will clear notifcations from the main screen
-function clearNotifications(time) {
-	let running = true;
-  // FUTURE NOTE: will want to make notification fade out to improve ux
-  // Takes in tiem as miliseconds ex: 1000 = 1 second
-	if (running == true) {
-    // currently doesent do anything
-    // present issue, runs over itself.
-    // fix: will have to kill the proccess when its reactived and its not done and start it over
-		setTimeout(() => {
-			document.getElementById("userNotification").innerHTML = ("");
-		}, time);
-	}
-}
+ipc.on("error-up", function () {
+	dialog.showErrorBox("An Error Has Occurred!", "An error has occurred in the up function, please check console for more info. ");
+});
