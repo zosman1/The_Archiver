@@ -12,6 +12,7 @@ require("electron-debug")();
 
 // prevent window being garbage collected
 let mainWindow;
+let willQuitApp;
 
 function onClosed() {
   // dereference the window
@@ -29,25 +30,43 @@ function createMainWindow() {
 	});
 
 	win.loadURL(`file://${__dirname}/index.html`);
-	win.on("closed", onClosed);
+	// win.on("closed", onClosed);
+	win.on("close", (event) => {
+		if  (process.platform == "darwin"){
+			if (willQuitApp) {
+				/* the user tried to quit the app */
+				mainWindow = null;
+			} else {
+				/* the user only tried to close the window */
+				event.preventDefault();
+				win.hide();
+			}
+		} else {
+			app.quit();
+		}
+	});
+
 
 	return win;
 }
 
 app.on("window-all-closed", () => {
-	if (process.platform !== "darwin") {
-		app.quit();
-	}
+	// if (process.platform !== "darwin") {
+	// 	app.quit();
+	// }
+	app.quit();
 });
 
 app.on("activate", () => {
-	if (!mainWindow) {
-		mainWindow = createMainWindow();
-	}
+	mainWindow.show();
 });
 
 app.on("ready", () => {
 	mainWindow = createMainWindow();
+});
+
+app.on("before-quit", () => {
+	willQuitApp = true;
 });
 
 ipc.on("error-down", function () {
