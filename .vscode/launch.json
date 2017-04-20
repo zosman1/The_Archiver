@@ -10,7 +10,7 @@
       "windows": {
         "runtimeExecutable": "${workspaceRoot}/app/node_modules/.bin/electron.cmd"
       },
-      "program": "${workspaceRoot}/app/index.js",
+      "program": "${workspaceRoot}/app/main.js",
       "protocol": "legacy"
     },
     {
@@ -22,7 +22,7 @@
         "runtimeExecutable": "${workspaceRoot}/app/node_modules/.bin/electron.cmd"
       },
       "runtimeArgs": [
-        "${workspaceRoot}/app/index.js",
+        "${workspaceRoot}/app/main.js",
         "--remote-debugging-port=9222"
       ],
       "webRoot": "${workspaceRoot}/app"
