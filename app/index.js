@@ -41,16 +41,13 @@ function handleCallback(err, direction){
 		down: ["The Virtual Machine Has Been Moved Down Onto The Local Drive!", "#0081ef", 7000],
 		up: ["The Virtual Machine Has Been Moved Up Onto The External Drive!", "#0081ef", 7000]
 	};
-	let ipcMessage = {
-		down: "error-down",
-		up: "error-up"
-	};
 	let ifError = false;
 	if (err) {
 		// Error callback
 		if (debug) {
 			console.error(`Error on moving ${direction} function: ${err}`);
-			ipc.send(ipcMessage[direction]);
+			// ipc.send(ipcMessage[direction]);
+			ipc.send("error-move", {direction: direction, error:err});
 		}
 		ifError = true;
 	}
