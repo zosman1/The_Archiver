@@ -26,6 +26,7 @@ function moveFiles(direction){
 			handleCallback(err, direction);
 			if (!err){
 				filelocation = direction;
+				notifyUserNative("The Archiver", "File moving has been completed!")
 			}
 			ready = true;
 		});
@@ -82,3 +83,11 @@ function updateDisplay() {
 	}
 }
 // End notify via HTML functions
+function notifyUserNative(title, body){
+
+	let myNotification = new Notification(title, {body: body});
+
+	myNotification.onclick = () => {
+		ipc.send("show-app");
+	};
+}
