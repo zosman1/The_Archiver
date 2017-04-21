@@ -26,12 +26,12 @@ function moveFiles(direction){
 			handleCallback(err, direction);
 			if (!err){
 				filelocation = direction;
-				notifyUserNative("The Archiver", "File moving has been completed!")
+				notifyUserNative("The Archiver", "File moving has been completed!");
 			}
 			ready = true;
 		});
 	} else {
-		notifyUser(`Files are already ${direction}!`, "#0081ef", 6000)
+		notifyUser(`Files are already ${direction}!`, "#0081ef", 6000);
 	}
 }
 
