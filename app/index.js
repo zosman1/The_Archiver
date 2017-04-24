@@ -13,10 +13,10 @@ function init() {
 }
 init();
 
- // eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
 function moveFiles(direction){
 	let fileArgs = {
-		up: ["path.home", "path.away"], 
+		up: ["path.home", "path.away"],
 		down: ["path.away", "path.home"]
 	};
 	if (!ready) return;
@@ -35,7 +35,6 @@ function moveFiles(direction){
 	}
 }
 
- // eslint-disable-next-line no-unused-vars
 function handleCallback(err, direction){
 	let notifyMessage = {
 		down: ["The Virtual Machine Has Been Moved Down Onto The Local Drive!", "#0081ef", 7000],
@@ -47,7 +46,8 @@ function handleCallback(err, direction){
 		if (debug) {
 			console.error(`Error on moving ${direction} function: ${err}`);
 			// ipc.send(ipcMessage[direction]);
-			ipc.send("error-move", {direction: direction, error:err});
+			// ipc.send("error-move", {direction: direction, error: util.inspect(err).split("\n")[0].substring(9)});
+			ipc.send("error-move", {direction: direction, error: String(err)});
 		}
 		ifError = true;
 	}
