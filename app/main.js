@@ -14,6 +14,7 @@ require("electron-debug")();
 let mainWindow;
 let willQuitApp;
 
+ // eslint-disable-next-line no-unused-vars
 function onClosed() {
   // dereference the window
   // for multiple windows store them in an array
@@ -69,10 +70,11 @@ app.on("before-quit", () => {
 	willQuitApp = true;
 });
 
-ipc.on("error-down", function () {
-	dialog.showErrorBox("An Error Has Occurred!", "An error has occurred in the down function, please check console for more info. ");
+ipc.on("error-move", (event, args) => {
+	dialog.showErrorBox("Oops! An Error Has Occurred!", `An error has occurred in the ${args.direction} function: ${args.error}`);
+	console.log(args.error);
 });
 
-ipc.on("error-up", function () {
-	dialog.showErrorBox("An Error Has Occurred!", "An error has occurred in the up function, please check console for more info. ");
+ipc.on("show-app", () => {
+	mainWindow.show();
 });

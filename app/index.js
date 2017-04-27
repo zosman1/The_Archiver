@@ -13,7 +13,7 @@ function init() {
 }
 init();
 
- // eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
 function moveFiles(direction){
 	let fileArgs = {
 		up: ["path.home", "path.away"],
@@ -23,34 +23,37 @@ function moveFiles(direction){
 	if (direction != filelocation){
 		ready = false;
 		fs.move(settings.get(fileArgs[direction][0]), settings.get(fileArgs[direction][1]), (err) => {
-			err ? filelocation = direction : errorHandle(err, direction);
+			handleCallback(err, direction);
+			if (!err){
+				filelocation = direction;
+				notifyUserNative("The Archiver", "File moving has been completed!");
+			}
 			ready = true;
 		});
-	}		
+	} else {
+		notifyUser(`Files are already ${direction}!`, "#0081ef", 6000);
+	}
 }
 
- // eslint-disable-next-line no-unused-vars
-function errorHandle(err, direction){
+function handleCallback(err, direction){
 	let notifyMessage = {
-		down: ["The Virtual Machine Has Been Moved Down Onto The Local Drive!", "darkgrey", 7000],
-		up: ["The Virtual Machine Has Been Moved Up Onto The External Drive!", "darkgrey", 7000]
-	};
-	let ipcMessage = {
-		down: "error-down",
-		up: "error-up"
+		down: ["The Virtual Machine Has Been Moved Down Onto The Local Drive!", "#0081ef", 7000],
+		up: ["The Virtual Machine Has Been Moved Up Onto The External Drive!", "#0081ef", 7000]
 	};
 	let ifError = false;
 	if (err) {
 		// Error callback
 		if (debug) {
 			console.error(`Error on moving ${direction} function: ${err}`);
-			ipc.send(ipcMessage[direction]);
+			// ipc.send(ipcMessage[direction]);
+			// ipc.send("error-move", {direction: direction, error: util.inspect(err).split("\n")[0].substring(9)});
+			ipc.send("error-move", {direction: direction, error: String(err)});
 		}
 		ifError = true;
 	}
 	else {
 		if (!ifError) {
-			notifyUser(notifyMessage[direction][0],notifyMessage[direction][1],notifyMessage[direction][2]);
+			notifyUser.apply({}, notifyMessage[direction]);
 		}
 	}
 }
@@ -71,9 +74,17 @@ function updateDisplay() {
 	var notifElem = document.getElementById("userNotification");
 	if (runningNotifications.length) {
 		var [content, color] = runningNotifications[0];
-		notifElem.innerHTML = (`<h5 style = 'font-weight: 400; color:${color}'>${content}</h5>`);
+		notifElem.innerHTML = (`<h5 style = 'margin-top: 5px;font-weight: 300; color:${color}'>${content}</h5>`);
 	} else {
 		notifElem.innerHTML = ("");
 	}
 }
 // End notify via HTML functions
+function notifyUserNative(title, body){
+
+	let myNotification = new Notification(title, {body: body});
+
+	myNotification.onclick = () => {
+		ipc.send("show-app");
+	};
+}
