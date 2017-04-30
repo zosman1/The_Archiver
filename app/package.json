@@ -15,7 +15,7 @@
     "test": "eslint *.js",
     "start": "electron .",
     "package:mac": "electron-packager .  --overwrite --platform=darwin --arch=x64 --out=dist --asar --icon=assets/icons/mac/icon.icns",
-    "package:linux": "electron-packager . --overwrite --platform=linux --arch=x64 --out=dist",
+    "package:linux": "electron-packager . --overwrite --platform=linux --arch=x64 --out=dist --icon=assets/icons/png/1024x1024.png",
     "fix": "eslint *.js --fix"
   },
   "files": [
