@@ -14,7 +14,8 @@
   "scripts": {
     "test": "eslint *.js",
     "start": "electron .",
-    "build": "electron-packager . --out=dist --asar --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns",
+    "package:mac": "electron-packager .  --overwrite --platform=darwin --arch=x64 --out=dist --asar --icon=assets/icons/mac/icon.icns",
+    "package:linux": "electron-packager . --overwrite --platform=linux --arch=x64 --out=dist",
     "fix": "eslint *.js --fix"
   },
   "files": [
