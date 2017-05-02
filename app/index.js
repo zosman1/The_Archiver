@@ -1,7 +1,7 @@
-const fs = require('fs-extra');
-const settings = require('electron-settings');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const ipc = require('electron').ipcRenderer;
+const fs = require('fs-extra');
+const settings = require('electron-settings');
 
 let ready = false;
 let filelocation = 'up';
