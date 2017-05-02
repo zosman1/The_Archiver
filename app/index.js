@@ -73,6 +73,7 @@ function moveFiles(direction) {
     if (!ready) return;
     if (direction !== filelocation) {
         ready = false;
+        // eslint-disable-next-line max-len
         fs.move(settings.get(fileArgs[direction][0]), settings.get(fileArgs[direction][1]), (err) => {
             handleCallback(err, direction);
             if (!err) {
