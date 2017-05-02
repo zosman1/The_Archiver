@@ -18,60 +18,60 @@ let willQuitApp;
 function onClosed() {
   // dereference the window
   // for multiple windows store them in an array
-  mainWindow = null;
+    mainWindow = null;
 }
 
 function createMainWindow() {
-  const win = new electron.BrowserWindow({
-    width: 600,
-    minWidth: 400,
-    height: 400,
-    minHeight: 350,
-    icon: path.join(__dirname, 'assets/icons/png/64x64.png'),
-  });
+    const win = new electron.BrowserWindow({
+        width: 600,
+        minWidth: 400,
+        height: 400,
+        minHeight: 350,
+        icon: path.join(__dirname, 'assets/icons/png/64x64.png'),
+    });
 
-  win.loadURL(`file://${__dirname}/index.html`);
+    win.loadURL(`file://${__dirname}/index.html`);
   // win.on("closed", onClosed);
-  win.on('close', (event) => {
-    if (process.platform === 'darwin') {
-      if (willQuitApp) {
+    win.on('close', (event) => {
+        if (process.platform === 'darwin') {
+            if (willQuitApp) {
         // the user tried to quit the app
-        mainWindow = null;
-      } else {
+                mainWindow = null;
+            } else {
         // the user only tried to close the window
-        event.preventDefault();
-        win.hide();
-      }
-    } else {
-      app.quit();
-    }
-  });
+                event.preventDefault();
+                win.hide();
+            }
+        } else {
+            app.quit();
+        }
+    });
 
 
-  return win;
+    return win;
 }
 
 app.on('window-all-closed', () => {
-  app.quit();
+    app.quit();
 });
 
 app.on('activate', () => {
-  mainWindow.show();
+    mainWindow.show();
 });
 
 app.on('ready', () => {
-  mainWindow = createMainWindow();
+    mainWindow = createMainWindow();
 });
 
 app.on('before-quit', () => {
-  willQuitApp = true;
+    willQuitApp = true;
 });
 
 ipc.on('error-move', (event, args) => {
-  dialog.showErrorBox('Oops! An Error Has Occurred!', `An error has occurred in the ${args.direction} function: ${args.error}`);
-  console.log(args.error);
+    dialog.showErrorBox('Oops! An Error Has Occurred!', `An error has occurred in the ${args.direction} function: ${args.error}`);
+    console.log(args.error);
 });
 
 ipc.on('show-app', () => {
-  mainWindow.show();
+    mainWindow.show();
 });
