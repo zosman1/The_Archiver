@@ -1,6 +1,13 @@
 const settings = require("electron-settings");
 const main = require("./main.js");
 
+function init() {
+	document.getElementById("homePath").value = settings.get("path.home");
+	document.getElementById("awayPath").value = settings.get("path.away");
+    console.warn("Settings.js Init Has been run")
+}
+init();
+
 // eslint-disable-next-line no-unused-vars
 function submitSettings() {
 	const homePath = document.getElementById("homePath").value;
