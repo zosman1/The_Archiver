@@ -1,6 +1,7 @@
 const settings = require("electron-settings");
 const main = require("./main.js");
 
+// eslint-disable-next-line no-unused-vars
 function init(){
 	document.getElementById("homePath").value = settings.get("path.home");
 	document.getElementById("awayPath").value = settings.get("path.away");
