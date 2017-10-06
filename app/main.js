@@ -14,10 +14,10 @@ require("electron-debug")();
 let mainWindow;
 let willQuitApp;
 
- // eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
 function onClosed() {
-  // dereference the window
-  // for multiple windows store them in an array
+	// dereference the window
+	// for multiple windows store them in an array
 	mainWindow = null;
 }
 
