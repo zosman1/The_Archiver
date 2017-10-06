@@ -2,6 +2,11 @@ const settings = require("electron-settings");
 const main = require("./main.js");
 
 // eslint-disable-next-line no-unused-vars
+function init(){
+	document.getElementById("homePath").value = settings.get("path.home");
+	document.getElementById("awayPath").value = settings.get("path.away");
+}
+// eslint-disable-next-line no-unused-vars
 function submitSettings() {
 	const homePath = document.getElementById("homePath").value;
 	const awayPath = document.getElementById("awayPath").value;
@@ -13,5 +18,4 @@ function submitSettings() {
 	document.getElementById("awayPath").value = "";
 	main.notifyUser("Settings Succesfully Changed!", "lightblue", 5000);
 }
-
-console.log(settings.getAll());
+// console.log(settings.getAll());
