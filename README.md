@@ -2,7 +2,7 @@
 
 > By Zosman
 
-:warning: **This project is still in development, I am not responsible for any file loss** :warning:
+:warning: **This project is deprecated, I am not responsible for any file loss** :warning:
 
 ## Summary
 This Electron app is designed to move a virtual machine to and from a users external drive to conserve space on the users home drive with minimal effort. This was created in an effort to reduce my own hard drive usage that was taken up by a virtual machine that I only occasionally used. 
